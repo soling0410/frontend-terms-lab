@@ -99,16 +99,7 @@ function runAction(a,b){
 }
 function showInnerToast(){const x=els.canvas.querySelector(".inner-toast");x.classList.add("show");clearTimeout(showInnerToast.t);showInnerToast.t=setTimeout(()=>x.classList.remove("show"),2200);}
 function showToast(msg){els.toast.textContent=msg;els.toast.classList.add("show");clearTimeout(showToast.t);showToast.t=setTimeout(()=>els.toast.classList.remove("show"),2200);}
-function copyPrompt(){
-  const selection=window.getSelection();
-  const range=document.createRange();
-  range.selectNodeContents(els.prompt);
-  selection.removeAllRanges();
-  selection.addRange(range);
-  $("#copy-button span:last-child").textContent="已选中";
-  showToast("文字已选中，请使用系统复制操作");
-  setTimeout(()=>$("#copy-button span:last-child").textContent="选中文字",1600);
-}
+async function copyPrompt(){const t=terms.find(x=>x.id===state.activeId);try{await navigator.clipboard.writeText(t.prompt);}catch{const x=document.createElement("textarea");x.value=t.prompt;x.style.position="fixed";x.style.opacity=0;document.body.appendChild(x);x.select();document.execCommand("copy");x.remove();}$("#copy-button span:last-child").textContent="已复制";showToast("已复制，可以直接粘贴给 AI");setTimeout(()=>$("#copy-button span:last-child").textContent="复制指令",1600);}
 function step(n){const p=filteredTerms().length?filteredTerms():terms;let i=p.findIndex(x=>x.id===state.activeId);selectTerm(p[(Math.max(i,0)+n+p.length)%p.length].id,{close:false});}
 function openCatalog({focusSearch=true}={}){els.catalog.classList.add("open");els.backdrop.hidden=false;els.catalogButton.setAttribute("aria-expanded","true");if(focusSearch)setTimeout(()=>els.search.focus(),220);}
 function closeCatalog(){els.catalog.classList.remove("open");els.backdrop.hidden=true;els.catalogButton.setAttribute("aria-expanded","false");}

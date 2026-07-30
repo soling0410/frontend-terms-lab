@@ -108,7 +108,7 @@
       html: `<div class="code-tree"><b>&lt;main&gt;</b><span>　&lt;h1&gt;标题&lt;/h1&gt;</span><span>　&lt;p&gt;正文&lt;/p&gt;</span><span>　&lt;button&gt;操作&lt;/button&gt;</span><b>&lt;/main&gt;</b></div>`,
       dom: `<div class="dom-tree"><b>document</b><span>└─ body</span><span>　├─ header</span><span class="active">　└─ main</span><span>　　└─ button</span></div>`,
       button: `<div class="button-states">${button("主要按钮")}${button("次要按钮")}<button disabled>不可用</button></div>`,
-      link: `<p class="link-copy">继续阅读这篇文章，了解 <a href="#link">如何建立设计系统</a>。</p>`,
+      link: `<p class="link-copy">继续阅读这篇文章，了解 <a href="#" onclick="return false">如何建立设计系统</a>。</p>`,
       input: `<label class="field-demo">邮箱地址${field("email","name@example.com")}<small>我们不会发送垃圾邮件</small></label>`,
       textarea: `<label class="field-demo">项目描述<textarea rows="4" placeholder="写下你的想法…"></textarea><small>0 / 200</small></label>`,
       "input-number": `<div class="number-demo">${button("−","number-minus")}<output>1</output>${button("+","number-plus")}</div>`,
@@ -119,8 +119,8 @@
       select: `<label class="field-demo">内容类型<select><option>教程</option><option>案例</option><option>资讯</option></select></label>`,
       autocomplete: `<div class="autocomplete-demo">${field("search","输入“前…”")}<div><span>前端开发</span><span>前端设计</span><span>前端动画</span></div></div>`,
       "date-picker": `<label class="field-demo">发布日期${field("date","")}</label>`,
-      upload: `<label class="upload-demo"><input type="file" accept="image/png,image/jpeg"><strong>＋</strong><span>点击选择或拖入文件</span><small>PNG、JPG，最大 10MB</small></label>`,
-      form: `<form class="form-demo"><label>姓名${field("text","你的名字")}</label><label>邮箱${field("email","name@example.com")}</label>${button("提交表单","form-submit")}<span></span></form>`,
+      upload: `<label class="upload-demo"><input type="file"><strong>＋</strong><span>点击选择或拖入文件</span><small>PNG、JPG，最大 10MB</small></label>`,
+      form: `<form class="form-demo" onsubmit="return false"><label>姓名${field("text","你的名字")}</label><label>邮箱${field("email","name@example.com")}</label>${button("提交表单","form-submit")}<span></span></form>`,
       "color-picker": `<div class="color-demo"><input type="color" value="#246bfe"><strong>#246BFE</strong><div><i></i><i></i><i></i><i></i></div></div>`,
       table: `<table><thead><tr><th>项目</th><th>状态</th><th>进度</th></tr></thead><tbody><tr><td>术语词典</td><td><b>进行中</b></td><td>81%</td></tr><tr><td>移动适配</td><td><b>已完成</b></td><td>100%</td></tr></tbody></table>`,
       list: `<ul class="content-list"><li><i>01</i><span><b>整理术语分类</b><small>今天 10:20</small></span></li><li><i>02</i><span><b>检查移动端</b><small>今天 11:45</small></span></li></ul>`,
@@ -200,8 +200,6 @@
       }
       if (actionName === "back-top") specimen.querySelector(".backtop-demo").scrollTo({ top: 0, behavior: "smooth" });
     }));
-    const form = specimen?.querySelector(".form-demo");
-    form?.addEventListener("submit", event => event.preventDefault());
     const slider = specimen?.querySelector(".slider-demo input");
     slider?.addEventListener("input", () => specimen.querySelector(".slider-demo output").textContent = `${slider.value}px`);
   };
