@@ -1,0 +1,72 @@
+.autoplay-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: white;
+  background: var(--ink);
+}
+
+.autoplay-control:hover {
+  color: var(--ink);
+  background: var(--acid);
+}
+
+.hover-sample.is-active {
+  color: white;
+  background: var(--ink);
+  box-shadow: 2px 2px 0 var(--coral);
+  transform: translate(5px, 5px);
+}
+
+.parallax-demo.auto-parallax i:nth-child(1) {
+  animation: auto-parallax-back 4.2s ease-in-out infinite alternate;
+}
+
+.parallax-demo.auto-parallax i:nth-child(2) {
+  animation: auto-parallax-front 3.4s ease-in-out infinite alternate;
+}
+
+.parallax-demo.auto-parallax strong {
+  animation: auto-parallax-title 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes auto-parallax-back {
+  from { transform: translate(-12px, -8px); }
+  to { transform: translate(18px, 12px); }
+}
+
+@keyframes auto-parallax-front {
+  from { transform: translate(22px, -14px); }
+  to { transform: translate(-28px, 18px); }
+}
+
+@keyframes auto-parallax-title {
+  from { transform: translate(-18px, 10px); }
+  to { transform: translate(24px, -12px); }
+}
+
+.reveal-demo.auto-reveal i {
+  animation: auto-reveal-card 3.35s ease-in-out infinite both;
+}
+
+.reveal-demo.auto-reveal i:nth-of-type(2) { animation-delay: 160ms; }
+.reveal-demo.auto-reveal i:nth-of-type(3) { animation-delay: 320ms; }
+
+@keyframes auto-reveal-card {
+  0%, 12% { opacity: 0; transform: translateY(26px); }
+  28%, 74% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.motion-paused *,
+.motion-paused *::before,
+.motion-paused *::after {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 560px) {
+  .autoplay-control {
+    flex: 1;
+    justify-content: center;
+  }
+}

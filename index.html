@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="前端术语实验室：用实时效果理解常见前端术语，并一键复制准确的 AI 修改指令。"
+    />
+    <meta name="theme-color" content="#171918" />
+    <title>前端术语实验室</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#term-detail">跳到术语详情</a>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="前端术语实验室首页">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>
+          <strong>前端术语实验室</strong>
+          <small>FRONTEND SPECIMEN LAB</small>
+        </span>
+      </a>
+      <div class="topbar-meta" aria-label="词库信息">
+        <span><b id="total-count">27</b> 个常用术语</span>
+        <span class="status-dot">实时效果已开启</span>
+      </div>
+      <button class="icon-button mobile-catalog-button" id="mobile-catalog-button" type="button" aria-expanded="false" aria-controls="catalog">
+        <span class="catalog-button-icon" aria-hidden="true">☰</span>
+        <span>分类</span>
+      </button>
+    </header>
+
+    <main class="app-shell">
+      <aside class="catalog" id="catalog" aria-label="术语目录">
+        <div class="catalog-head">
+          <p class="eyebrow">术语索引</p>
+          <h1>把“说不清楚”<br />变成准确指令。</h1>
+          <label class="search-box" for="search-input">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="search-input" type="search" placeholder="搜中文、英文或效果" autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+        </div>
+
+        <div class="category-section-head">
+          <strong>按分类浏览</strong>
+          <span>12 类</span>
+        </div>
+        <div class="category-tabs" id="category-tabs" role="tablist" aria-label="术语分类"></div>
+
+        <div class="catalog-result-meta">
+          <span id="result-count">全部 27 个</span>
+          <button id="clear-search" class="text-button" type="button" hidden>清空</button>
+        </div>
+
+        <nav class="term-list" id="term-list" aria-label="术语列表"></nav>
+        <div class="empty-state" id="empty-state" hidden>
+          <strong>没有找到这个说法</strong>
+          <p>试试搜索“圆角”“居中”“悬浮”或英文名称。</p>
+        </div>
+      </aside>
+
+      <section class="mobile-discovery" aria-labelledby="mobile-discovery-title">
+        <div class="mobile-discovery-head">
+          <div>
+            <p class="eyebrow">术语地图</p>
+            <h1 id="mobile-discovery-title">从分类开始找效果</h1>
+          </div>
+          <span id="mobile-discovery-total">12 类 · 140 词</span>
+        </div>
+        <p class="mobile-discovery-hint">左右滑动查看更多，点击分类进入对应术语</p>
+        <div class="mobile-category-rail" id="mobile-category-rail" aria-label="快速选择术语分类"></div>
+      </section>
+
+      <section class="detail-panel" id="term-detail" aria-live="polite">
+        <div class="detail-scroll">
+          <div class="detail-number" id="detail-number">01 / 27</div>
+          <p class="eyebrow" id="detail-category">布局</p>
+          <h2 id="detail-name">弹性布局</h2>
+          <p class="english-name" id="detail-english">Flexbox</p>
+          <p class="term-summary" id="detail-summary"></p>
+
+          <div class="explain-block">
+            <span>它是什么</span>
+            <p id="detail-description"></p>
+          </div>
+
+          <div class="explain-block">
+            <span>什么时候说</span>
+            <p id="detail-usage"></p>
+          </div>
+
+          <div class="ai-instruction">
+            <div class="instruction-head">
+              <span>可以直接对 AI 说</span>
+              <button class="copy-button" id="copy-button" type="button">
+                <span aria-hidden="true">⧉</span>
+                <span>复制指令</span>
+              </button>
+            </div>
+            <blockquote id="detail-prompt"></blockquote>
+          </div>
+
+          <div class="related-section">
+            <span>一起认识</span>
+            <div id="related-terms" class="related-terms"></div>
+          </div>
+        </div>
+
+        <div class="detail-nav">
+          <button id="previous-term" type="button" aria-label="上一个术语"><span aria-hidden="true">←</span> 上一个</button>
+          <button id="next-term" type="button" aria-label="下一个术语">下一个 <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section class="preview-panel" aria-label="实时效果预览">
+        <div class="preview-toolbar">
+          <div>
+            <span class="live-indicator"><i></i> LIVE</span>
+            <span id="preview-label">Flexbox 实时样本</span>
+          </div>
+          <div class="viewport-switcher" role="group" aria-label="预览宽度">
+            <button class="viewport-button active" type="button" data-viewport="desktop" aria-pressed="true" title="桌面宽度">▱</button>
+            <button class="viewport-button" type="button" data-viewport="mobile" aria-pressed="false" title="手机宽度">▯</button>
+          </div>
+        </div>
+
+        <div class="preview-stage" id="preview-stage">
+          <div class="preview-canvas" id="preview-canvas"></div>
+        </div>
+
+        <div class="preview-control-bar">
+          <p id="preview-hint">拖动控件或点击样本，观察效果变化</p>
+          <div id="demo-controls" class="demo-controls"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="catalog-backdrop" id="catalog-backdrop" hidden></div>
+    <div class="toast" id="app-toast" role="status" aria-live="polite"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

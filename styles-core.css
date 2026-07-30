@@ -1,0 +1,61 @@
+@import url("./styles-base.css");
+
+.position-parent {
+  width: min(76%, 340px);
+  min-height: 190px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ink);
+  background: #edf1ef;
+}
+
+.position-parent strong { font-family: var(--display); font-size: 28px; }
+.position-parent small { margin-top: 7px; color: var(--muted); }
+
+.position-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  padding: 9px 11px;
+  color: white;
+  background: var(--coral);
+  box-shadow: 5px 5px 0 var(--acid);
+  font-family: Georgia, serif;
+  font-size: 11px;
+  transition: 220ms ease;
+}
+
+.position-badge.bottom-corner { top: calc(100% - 18px); right: calc(100% - 40px); }
+
+.stack-sample {
+  width: 260px;
+  height: 220px;
+  position: relative;
+}
+
+.stack-sample div {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: 700;
+  transition: 220ms ease;
+}
+
+.stack-sample div:nth-child(1) { z-index: 1; top: 0; left: 0; background: var(--acid); }
+.stack-sample div:nth-child(2) { z-index: 2; top: 40px; left: 62px; color: white; background: var(--coral); }
+.stack-sample div:nth-child(3) { z-index: 3; top: 80px; left: 126px; color: white; background: var(--blue); }
+
+.animation-paused,
+.animation-paused::before,
+.animation-paused::after,
+.animation-paused * {
+  animation-play-state: paused !important;
+}
